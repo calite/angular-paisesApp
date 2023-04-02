@@ -14,21 +14,26 @@ export class PorPaisComponent {
 
   constructor(private paisService : PaisService) { }
     
-    buscar() {
+    buscar( termino : string ) {
+      
       this.hayError = false;
-      console.log(this.termino);
+      this.termino = termino;
 
-      this.paisService.buscarPias( this.termino )
+      this.paisService.buscarPais( termino ) //buscador de paises
       .subscribe( paises => {
         
-        console.log(paises);
+        //console.log(paises);
         this.paises = paises;
 
-      }, (err) =>{
+      }, (err) =>{ //
         this.hayError = true;
         this.paises = [];
       });
 
+    }
+
+    sugerencias( termino : string ){
+      this.hayError = false;
     }
     
   
